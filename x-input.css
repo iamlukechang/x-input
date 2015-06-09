@@ -1,0 +1,22 @@
+:host::shadow input,
+:host::shadow select,
+:host::shadow textarea {
+  font-size: 12px;
+}
+
+:host::shadow textarea {
+  vertical-align: middle;
+}
+
+:host::shadow input:disabled,
+:host::shadow select:disabled,
+:host::shadow textarea:disabled {
+  background: initial;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+:host::shadow select:disabled {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

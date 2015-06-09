@@ -1,0 +1,37 @@
+<!--
+/**
+ * <x-input></x-input>
+ *
+ * @author iamlukechang@gmail.com (Luke Chang)
+ */
+-->
+
+<polymer-element name="x-input" attributes="value type aliases disabled" noscript>
+  <template>
+    <link rel="stylesheet" href="x-input.css" />
+
+    <!--checkbox-->
+    <template if="{{type == 'checkbox'}}">
+      <input type="{{type}}" checked="{{value}}" disabled?="{{disabled}}" />
+    </template>
+
+    <!--textarea-->
+    <template if="{{type == 'textarea'}}">
+      <textarea value="{{value}}" rows="{{disabled ? 1 : 4}}" disabled?="{{disabled}}" style="resize: {{disabled ? 'none' : 'both'}};"></textarea>
+    </template>
+
+    <!--select-->
+    <template if="{{type == 'select' && aliases}}">
+      <select value="{{value}}" disabled?="{{disabled}}">
+        <template repeat="{{selection in aliases}}">
+          <option value="{{selection.value}}">{{selection.name}}</option>
+        </template>
+      </select>
+    </template>
+
+    <!--input-->
+    <template if="{{type !== 'textarea' && type !== 'checkbox' && type !== 'select'}}">
+      <input value="{{value}}" type="{{type}}" disabled?="{{disabled}}" />
+    </template>
+  </template>
+</polymer-element>
